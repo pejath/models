@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bodyType: MyText
+  doorsNum: 1
+  seatsNum: 1
+  engineType: MyText
+  engineLocate: MyText
+  engineDispl: 1.5
+
+two:
+  bodyType: MyText
+  doorsNum: 1
+  seatsNum: 1
+  engineType: MyText
+  engineLocate: MyText
+  engineDispl: 1.5

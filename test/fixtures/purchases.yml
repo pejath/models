@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customerCode: 1
+  purchaseDate: 2021-12-20
+  delivert: false
+  typeOfPayment: MyText
+
+two:
+  customerCode: 1
+  purchaseDate: 2021-12-20
+  delivert: false
+  typeOfPayment: MyText
