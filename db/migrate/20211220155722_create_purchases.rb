@@ -1,6 +1,8 @@
 class CreatePurchases < ActiveRecord::Migration[6.1]
   def change
     create_table :purchases do |t|
+      # t.belongs_to :account
+      # t.belongs_to :product
       t.integer :customerCode
       t.date :purchaseDate
       t.boolean :delivert

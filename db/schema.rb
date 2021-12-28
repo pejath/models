@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_150826) do
+ActiveRecord::Schema.define(version: 2021_12_28_151726) do
 
-  create_table "clients", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
+    t.integer "person_id"
+    t.boolean "admin"
+    t.text "password"
+    t.text "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_accounts_on_person_id"
+  end
+
+  create_table "people", force: :cascade do |t|
     t.text "fullName"
     t.text "passportSeries"
     t.text "passportNum"
@@ -22,13 +32,9 @@ ActiveRecord::Schema.define(version: 2021_12_21_150826) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ggwps", force: :cascade do |t|
-    t.boolean "delivery"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "products", force: :cascade do |t|
+    t.integer "account_id"
+    t.integer "product_id"
     t.text "countryOrin"
     t.text "carBrand"
     t.text "model"
@@ -37,6 +43,8 @@ ActiveRecord::Schema.define(version: 2021_12_21_150826) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_products_on_account_id"
+    t.index ["product_id"], name: "index_products_on_product_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -55,12 +63,6 @@ ActiveRecord::Schema.define(version: 2021_12_21_150826) do
     t.text "engineType"
     t.text "engineLocate"
     t.float "engineDispl"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "true_or_falses", force: :cascade do |t|
-    t.boolean "delivery"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

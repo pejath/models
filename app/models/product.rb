@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_many :purchase
   validates :countryOrin, presence: true
   validates :color, inclusion: { in: %w[red orange yellow green blue indigo violet black white] }, presence: true
   validates :carBrand, presence: true
