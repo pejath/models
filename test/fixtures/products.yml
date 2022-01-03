@@ -1,17 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  countryOrin: MyText
   carBrand: MyText
-  model: MyText
   color: MyText
-  availability: false
   price: 1.5
+  wos: 2022-01-01
 
 two:
-  countryOrin: MyText
   carBrand: MyText
-  model: MyText
   color: MyText
-  availability: false
   price: 1.5
+  wos: 2022-01-01

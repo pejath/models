@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_151726) do
+ActiveRecord::Schema.define(version: 2022_01_01_122627) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "person_id"
@@ -33,38 +33,35 @@ ActiveRecord::Schema.define(version: 2021_12_28_151726) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "account_id"
-    t.integer "product_id"
-    t.text "countryOrin"
     t.text "carBrand"
-    t.text "model"
     t.text "color"
-    t.boolean "availability"
     t.float "price"
+    t.date "wos"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_products_on_account_id"
-    t.index ["product_id"], name: "index_products_on_product_id"
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer "customerCode"
-    t.date "purchaseDate"
+    t.integer "account_id"
+    t.integer "product_id"
     t.boolean "delivert"
     t.text "typeOfPayment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_purchases_on_account_id"
+    t.index ["product_id"], name: "index_purchases_on_product_id"
   end
 
   create_table "tech_infos", force: :cascade do |t|
+    t.integer "product_id"
     t.text "bodyType"
     t.integer "doorsNum"
     t.integer "seatsNum"
     t.text "engineType"
-    t.text "engineLocate"
     t.float "engineDispl"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_tech_infos_on_product_id"
   end
 
 end
