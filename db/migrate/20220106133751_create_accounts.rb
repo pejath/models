@@ -5,6 +5,7 @@ class CreateAccounts < ActiveRecord::Migration[6.1]
       t.boolean :admin
       t.text :password
       t.text :email
+      t.text :nickName
 
       t.timestamps
     end

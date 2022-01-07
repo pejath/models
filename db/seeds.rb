@@ -13,6 +13,8 @@ require 'securerandom'
 @colors   = %w[red orange yellow green blue indigo violet black white]
 @bodytype = ['Sedan', 'Coupe', 'Sports Car', 'Station Wagon', 'Hatchback', 'Convertible', 'Minivan']
 @engine   = %w[Electrical Diesel Petrol]
+@nickName = %w[Onaldina Kovittan Bettel Phael Quinle Ycaaa Chaim Karshan Sese Maralyn Corma Tainsl Onne Malonet Zolankaa Kathe Bsterrya Paisier Gannanco Torre Randay Ugust Zzieanas Yamka Anas Abiassom Gonys Gavrit Genervat Zuria Sean Marguel Phonde Dair Wighto Bryonce Freda Rickayd Kiarendi Inet]
+@randvalue = rand(0...40)
 
 (0..7).each do |i|
   Person.create(fullName: "#{@names.sample} #{@surnames.sample}", passportSeries: rand(1000..9999),
@@ -20,11 +22,15 @@ require 'securerandom'
 end
 
 (0..7).each do |i|
-  Account.create(person_id: i, admin: false, password: SecureRandom.hex[0..10], email: "#{SecureRandom.hex[0..5]}@example.com")
+  (@randvalue = rand(0...40)) while Account.exists?(nickName: @nickName[@randvalue])
+
+  Account.create(person_id: i, admin: false, nickName:@nickName[@randvalue], password: SecureRandom.hex[0..10], email: "#{SecureRandom.hex[0..5]}@example.com")
+
 end
 3.times do
-  Account.create(person_id: rand(0..7), admin: true, password: SecureRandom.hex[0..15], email: "#{SecureRandom.hex[0..5]}@example.com")
-  end
+  (@randvalue = rand(0...40)) while Account.exists?(nickName: @nickName[@randvalue])
+  Account.create(person_id: rand(0..7), admin: true, nickName: @nickName[@randvalue], password: SecureRandom.hex[0..15], email: "#{SecureRandom.hex[0..5]}@example.com")
+end
 
 (0..10).each { |i|
   Product.create(carBrand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(20..22)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
@@ -33,7 +39,8 @@ end
   Product.create(carBrand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(16..20)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
 }
 (1..22).each{ |i|
-  TechInfo.create(product_id:i, bodyType: @bodytype.sample, doorsNum: rand(1..5), seatsNum: rand(1..10), engineType: eng = @engine.sample, engineDispl: eng == "Electrical"? 0.0 : rand(0.1..8.0).round(2))
+  (@randvalue = rand(1..22)) while TechInfo.exists?(product_id: @randvalue.to_s)
+  TechInfo.create(product_id: @randvalue.to_s, bodyType: @bodytype.sample, doorsNum: rand(1..5), seatsNum: rand(1..10), engineType: eng = @engine.sample, engineDispl: eng == "Electrical"? 0.0 : rand(0.1..8.0).round(2))
 }
 
 (0..20).each do |i|

@@ -4,8 +4,10 @@ one:
   admin: false
   password: MyText
   email: MyText
+  nickName: MyText
 
 two:
   admin: false
   password: MyText
   email: MyText
+  nickName: MyText
