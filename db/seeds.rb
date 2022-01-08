@@ -19,13 +19,13 @@ require 'securerandom'
 (0..7).each do |i|
   Person.create(fullName: "#{@names.sample} #{@surnames.sample}", passportSeries: rand(1000..9999),
                 passportNum: rand(10..99), homeAdress:"#{i}", phoneNum: rand(100..999))
+  Person.last.pictures << Picture.new(name: "Person pic #{i}")
 end
 
 (0..7).each do |i|
   (@randvalue = rand(0...40)) while Account.exists?(nickName: @nickName[@randvalue])
 
   Account.create(person_id: i, admin: false, nickName:@nickName[@randvalue], password: SecureRandom.hex[0..10], email: "#{SecureRandom.hex[0..5]}@example.com")
-
 end
 3.times do
   (@randvalue = rand(0...40)) while Account.exists?(nickName: @nickName[@randvalue])
@@ -34,9 +34,11 @@ end
 
 (0..10).each { |i|
   Product.create(carBrand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(20..22)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
+  Product.last.pictures << Picture.new(name: "Product pic #{rand(11..20)}")
 }
 (0..10).each{|i|
   Product.create(carBrand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(16..20)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
+  3.times{Product.last.pictures << Picture.new(name: "Product pic #{rand(21..30)}")}
 }
 (1..22).each{ |i|
   (@randvalue = rand(1..22)) while TechInfo.exists?(product_id: @randvalue.to_s)

@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   has_one :purchase
   has_one :tech_info
+  has_many :pictures, as: :imageble
 
   validates :color, inclusion: { in: %w[red orange yellow green blue indigo violet black white] }, presence: true
   validates :carBrand, presence: true
