@@ -33,19 +33,19 @@ end
 end
 
 (0..10).each { |i|
-  Product.create(carBrand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(20..22)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
+  Product.create(car_brand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(20..22)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
   Product.last.pictures << Picture.new(name: "Product pic #{rand(11..20)}")
 }
 (0..10).each{|i|
-  Product.create(carBrand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(16..20)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
+  Product.create(car_brand: @brands.sample, color: @colors.sample, price: rand(1000.0 .. 100000.0).round(2), wos: "20#{rand(16..20)}.#{month = rand(1..12)}.#{month != 2? rand(1..28):rand(1..30)}")
   3.times{Product.last.pictures << Picture.new(name: "Product pic #{rand(21..30)}")}
 }
 (1..22).each{ |i|
   (@randvalue = rand(1..22)) while TechInfo.exists?(product_id: @randvalue.to_s)
-  TechInfo.create(product_id: @randvalue.to_s, bodyType: @bodytype.sample, doorsNum: rand(1..5), seatsNum: rand(1..10), engineType: eng = @engine.sample, engineDispl: eng == "Electrical"? 0.0 : rand(0.1..8.0).round(2))
+  TechInfo.create(product_id: @randvalue.to_s, body_type: @bodytype.sample, doors_num: rand(1..5), seats_num: rand(1..10), engine_type: eng = @engine.sample, engine_displ: eng == "Electrical"? 0.0 : rand(0.1..8.0).round(2))
 }
 
 (0..20).each do |i|
-  Purchase.create(account_id: rand(11), product_id: i, delivert:[true, false].sample, typeOfPayment: ["card", "cash"].sample)
+  Purchase.create(account_id: rand(11), product_id: i, delivery:[true, false].sample, type_of_payment: ["card", "cash"].sample)
 end
 
