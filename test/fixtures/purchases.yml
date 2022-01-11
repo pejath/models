@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  delivert: false
-  typeOfPayment: MyText
+  delivery: false
+  type_of_payment: MyText
 
 two:
-  delivert: false
-  typeOfPayment: MyText
+  delivery: false
+  type_of_payment: MyText

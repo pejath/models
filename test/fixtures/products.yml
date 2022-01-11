@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  carBrand: MyText
+  car_brand: MyText
+  model: MyText
   color: MyText
   price: 1.5
-  wos: 2022-01-01
+  wos: 2022-01-11
 
 two:
-  carBrand: MyText
+  car_brand: MyText
+  model: MyText
   color: MyText
   price: 1.5
-  wos: 2022-01-01
+  wos: 2022-01-11

@@ -1,8 +1,9 @@
 class TechInfo < ApplicationRecord
   belongs_to :product
-  validates :bodyType, presence: true
-  validates :doorsNum, numericality:{only_integer: true, greater_than: 0}, presence: true
-  validates :seatsNum, numericality:{only_integer: true, greater_than: 0}, presence: true
-  validates :engineType, presence: true
-  validates :engineDispl,numericality: {greater_than_or_equal_to: 0}, presence: true
+
+  validates :body_type, presence: true
+  validates :doors_num, numericality:{only_integer: true, greater_than: 0}, presence: true
+  validates :seats_num, numericality:{only_integer: true, greater_than: 0}, presence: true
+  validates :engine_type, presence: true
+  validates :engine_displ,numericality: {greater_than_or_equal_to: 0}, presence: true
 end

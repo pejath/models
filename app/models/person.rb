@@ -2,9 +2,9 @@ class Person < ApplicationRecord
   has_many :accounts
   has_many :pictures, as: :imageble
 
-  validates :fullName, presence: true
-  validates :passportSeries, presence: true, uniqueness: true
-  validates :passportNum, presence: true, uniqueness: true
-  validates :homeAdress, presence: true
-  validates :phoneNum, presence: true #возможно стоит добавить numericality:{only_integer: true}
+  validates :full_name, presence: true
+  validates :passport_series, presence: true, uniqueness: true
+  validates :passport_num, presence: true, uniqueness: true
+  validates :home_adress, presence: true
+  validates :phone_num, presence: true, numericality: {only_integer: true}
 end

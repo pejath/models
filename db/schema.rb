@@ -10,25 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_08_154129) do
+ActiveRecord::Schema.define(version: 2022_01_11_095959) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "person_id"
     t.boolean "admin"
     t.text "password"
     t.text "email"
-    t.text "nickName"
+    t.text "nickname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["person_id"], name: "index_accounts_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
-    t.text "fullName"
-    t.text "passportSeries"
-    t.text "passportNum"
-    t.text "homeAdress"
-    t.integer "phoneNum"
+    t.text "full_name"
+    t.text "passport_series"
+    t.text "passport_num"
+    t.text "home_adress"
+    t.integer "phone_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -43,19 +43,22 @@ ActiveRecord::Schema.define(version: 2022_01_08_154129) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.text "carBrand"
+    t.integer "product_id"
+    t.text "car_brand"
+    t.text "model"
     t.text "color"
     t.float "price"
     t.date "wos"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_products_on_product_id"
   end
 
   create_table "purchases", force: :cascade do |t|
     t.integer "account_id"
     t.integer "product_id"
-    t.boolean "delivert"
-    t.text "typeOfPayment"
+    t.boolean "delivery"
+    t.text "type_of_payment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_purchases_on_account_id"
@@ -64,11 +67,11 @@ ActiveRecord::Schema.define(version: 2022_01_08_154129) do
 
   create_table "tech_infos", force: :cascade do |t|
     t.integer "product_id"
-    t.text "bodyType"
-    t.integer "doorsNum"
-    t.integer "seatsNum"
-    t.text "engineType"
-    t.float "engineDispl"
+    t.text "body_type"
+    t.integer "doors_num"
+    t.integer "seats_num"
+    t.text "engine_type"
+    t.float "engine_displ"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_tech_infos_on_product_id"
