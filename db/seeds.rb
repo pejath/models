@@ -17,19 +17,21 @@ require 'securerandom'
 @randvalue = rand(0...40)
 
 (0..7).each do |i|
-  Person.create(fullName: "#{@names.sample} #{@surnames.sample}", passportSeries: rand(1000..9999),
-                passportNum: rand(10..99), homeAdress:"#{i}", phoneNum: rand(100..999))
+  Person.create(full_name: "#{@names.sample} #{@surnames.sample}", passport_series: rand(1000..9999),
+                passport_num: rand(10..99), home_adress:"#{i}", phone_num: rand(100..999))
   Person.last.pictures << Picture.new(name: "Person pic #{i}")
 end
 
 (0..7).each do |i|
-  (@randvalue = rand(0...40)) while Account.exists?(nickName: @nickName[@randvalue])
+  (@randvalue = rand(0...40)) while Account.exists?(nickname: @nickName[@randvalue])
 
-  Account.create(person_id: i, admin: false, nickName:@nickName[@randvalue], password: SecureRandom.hex[0..10], email: "#{SecureRandom.hex[0..5]}@example.com")
+  Account.create(person_id: i, admin: false, nickname:@nickName[@randvalue], password: SecureRandom.hex[0..10], email: "#{SecureRandom.hex[0..5]}@example.com")
 end
+
 3.times do
-  (@randvalue = rand(0...40)) while Account.exists?(nickName: @nickName[@randvalue])
-  Account.create(person_id: rand(0..7), admin: true, nickName: @nickName[@randvalue], password: SecureRandom.hex[0..15], email: "#{SecureRandom.hex[0..5]}@example.com")
+
+  (@randvalue = rand(0...40)) while Account.exists?(nickname: @nickName[@randvalue])
+  Account.create(person_id: rand(0..7), admin: true, nickname: @nickName[@randvalue], password: SecureRandom.hex[0..15], email: "#{SecureRandom.hex[0..5]}@example.com")
 end
 
 (0..10).each { |i|

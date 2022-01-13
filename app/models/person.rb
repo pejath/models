@@ -1,5 +1,5 @@
 class Person < ApplicationRecord
-  has_many :accounts
+  has_and_belongs_to_many :accounts
   has_many :pictures, as: :imageble
 
   validates :full_name, presence: true
